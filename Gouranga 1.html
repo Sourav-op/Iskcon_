@@ -80,10 +80,10 @@
             margin-bottom: 20px;
         }
 
-        /* --- PAGE 3: Updated with your Image Background --- */
-        #page3 {
+        /* --- PAGE 3 & 4: Image Background --- */
+        #page3, #page4 {
             background: linear-gradient(rgba(255, 245, 230, 0.85), rgba(255, 245, 230, 0.85)), 
-                        url('yellow one.jpeg'); /* Your uploaded image */
+                        url('yellow one.jpeg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -117,6 +117,35 @@
             font-size: 0.85em;
         }
 
+        /* --- CONTACT STYLES --- */
+        .service-list {
+            text-align: left;
+            display: inline-block;
+            margin: 15px 0;
+            line-height: 1.8;
+            font-weight: bold;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            width: 100%;
+            background: #25D366; /* Green for Action */
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #128C7E;
+            transform: scale(1.02);
+        }
+
         .copy-btn {
             display: inline-block;
             margin-top: 10px;
@@ -137,7 +166,10 @@
             border: none;
             border-radius: 25px;
             cursor: pointer;
+            transition: 0.3s;
         }
+
+        button:hover { background: #b8962d; }
 
         h1 { margin-bottom: 10px; color: #ff5e62; }
         #page1 h1 { color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
@@ -149,14 +181,12 @@
         <div class="envelope">
             <h1>Hare Krishna</h1>
             <p>The appearance of Sri Chaitanya Mahaprabhu begins in:</p>
-            
             <div class="countdown-container">
                 <div class="time-box"><span id="days">00</span><div class="time-label">Days</div></div>
                 <div class="time-box"><span id="hours">00</span><div class="time-label">Hrs</div></div>
                 <div class="time-box"><span id="mins">00</span><div class="time-label">Mins</div></div>
                 <div class="time-box"><span id="secs">00</span><div class="time-label">Secs</div></div>
             </div>
-
             <p>You are cordially invited to Gaur Purnima Utsav</p>
             <p><strong>Tap to Open</strong></p>
         </div>
@@ -165,7 +195,7 @@
     <div id="page2" class="page">
         <h2 style="color:#4a0e0e">A Divine Glimpse</h2>
         <video id="purnimaVideo" controls>
-            <source src="0215 (1)(1)(1).mp4" type="video/mp4">
+            <source src="0215 (1)(1).mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <button onclick="showPage('page3')">Next: View Invitation Details</button>
@@ -196,8 +226,31 @@
                 <br>
                 <div class="copy-btn" onclick="event.stopPropagation(); copyUPI()">Copy UPI ID</div>
             </div>
+        </div>
+        <button onclick="showPage('page4')">Next: सेवा का अवसर</button>
+    </div>
 
-            <p style="margin-top:20px;"><em>Looking forward to seeing you there!</em></p>
+    <div id="page4" class="page">
+        <div class="card-details">
+            <h1 style="color: #ff5e62;">सेवा का अवसर</h1>
+            <p><em>(Opportunities for Service)</em></p>
+            <hr style="border:0; height:1px; background:#d4af37;">
+            
+            <div class="service-list">
+                1. 🌸 अभिषेकम (Abhishekam)<br>
+                2. 🎨 Decoration<br>
+                3. 🍲 Prasadam<br>
+                4. 🍯 56 Bhog Daan Seva<br>
+                5. 🌻 Flower Donation 
+            </div>
+
+            <p style="margin-top: 20px; font-weight: bold;">To participate in any Seva, please contact us directly:</p>
+            
+            <a href="tel:+917050047726" class="contact-btn">
+                📞 Contact Now: +91 70500 47726
+            </a>
+
+            <p style="font-size: 0.8em; color: #666; margin-top: 10px;">Clicking the button will open your phone's dialpad.</p>
         </div>
         <button onclick="showPage('page1')">Back to Start</button>
     </div>
@@ -211,10 +264,10 @@
             const diff = targetDate - now;
 
             if (diff > 0) {
-                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
             }
         }
         setInterval(updateCountdown, 1000);
@@ -244,5 +297,4 @@
         }
     </script>
 </body>
-
 </html>
